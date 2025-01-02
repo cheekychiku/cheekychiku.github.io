@@ -1,0 +1,223 @@
+@import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+@import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+/* Global */
+
+.body {
+    background-color: rgb(43, 43, 43);
+    padding: 0%;
+    font-family: 'Comfortaa', 'Segoe UI', sans-serif;
+}
+
+#intro {}
+
+#mainHeading {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 4rem;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-simple-animation-rev 2s ease forwards;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#mainHeading:hover {
+    animation: rainbow-text-simple-animation 2s ease-in forwards
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigationBar ul {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+}
+
+.navigationBar ul li {
+    list-style: none;
+    width: fit-content;
+    border: 2px solid gree;
+    padding: 20px;
+    color: white;
+    transition-duration: 1s;
+}
+
+.navigationBar ul li:hover {
+    cursor: pointer;
+    transition-duration: 1s;
+    color: red;
+}
+
+p {
+    border-right: solid 3px rgba(0, 255, 0, .75);
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, .70);
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Animation */
+
+p {
+    animation: animated-text 5s steps(29, end) 2s 1 normal both, animated-cursor 600ms steps(29, end) infinite;
+}
+
+#intro h3 {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px;
+    margin-top: 2rem;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-simple-animation-rev 2s ease forwards;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#intro h3:hover {
+    animation: rainbow-text-simple-animation 2s ease-in forwards
+}
+
+.info {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-self: center;
+    margin: auto;
+}
+
+.info div {
+    height: 200px;
+    width: 280px;
+    display: flex;
+    padding: 20px;
+    border-radius: 1rem;
+    background-color: rgba(53, 53, 53, 0);
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+    text-align: center;
+    line-height: 35px;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.658), 0 6px 20px 0 rgba(0, 0, 0, 0.767);
+}
+
+#About {
+    transition-duration: 4s;
+}
+
+#About:hover {
+    cursor: pointer;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 2s ease forwards;
+}
+
+#Projects {
+    transition-duration: 4s;
+}
+
+#Projects:hover {
+    cursor: pointer;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 2s ease forwards;
+}
+
+#Services {
+    transition-duration: 4s;
+}
+
+#Services:hover {
+    cursor: pointer;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    background-clip: text;
+    animation: rainbow-text-simple-animation-rev 2s ease forwards;
+}
+
+.info div {
+    margin-left: 15px;
+    box-shadow: 0 4px 8px 0 rgba(58, 58, 58, 0.658), 0 6px 20px 0 rgba(66, 66, 66, 0.767);
+}
+
+@media only screen and (max-width: 720px) {
+    .info {
+        flex-direction: column;
+    }
+    .info div {
+        margin-bottom: 15px;
+    }
+}
+
+/* text animation */
+
+@keyframes animated-text {
+    from {
+        width: 0;
+    }
+    to {
+        width: 85%;
+    }
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor {
+    from {
+        border-right-color: rgb(255, 0, 234);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
