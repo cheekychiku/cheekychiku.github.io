@@ -1,7 +1,121 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anay's Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #121212;
+            color: #fff;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        header {
+            margin-bottom: 40px;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+        }
+        header p {
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+        .section {
+            margin: 40px 0;
+        }
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .skills, .projects {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            width: 300px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
+        .contact a {
+            color: #00ADB5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        .footer {
+            margin-top: 60px;
+            font-size: 0.9rem;
+            color: #777;
+        }
+    </style>
+</head>
 <body>
-<h1>Hello World</h1>
-<p>I'm hosted with GitHub Pages.</p>
+    <div class="container">
+        <header>
+            <h1>Anay's Portfolio</h1>
+            <p>18-year-old aspiring software engineer | Dark humor enthusiast | JEE warrior</p>
+        </header>
+
+        <section class="section about">
+            <h2>About Me</h2>
+            <p>I'm Anay, a JEE dropper grinding to crack into a top-tier engineering college. Passionate about coding, fitness, and aesthetics. I believe in living life like a game - leveling up every day.</p>
+        </section>
+
+        <section class="section skills">
+            <h2>Skills</h2>
+            <div class="card">Web Development</div>
+            <div class="card">Python</div>
+            <div class="card">JavaScript</div>
+            <div class="card">C++</div>
+        </section>
+
+        <section class="section projects">
+            <h2>Projects</h2>
+            <div class="card">
+                <h3>Portfolio Website</h3>
+                <p>A personal portfolio to showcase my skills and projects.</p>
+            </div>
+            <div class="card">
+                <h3>Weather App</h3>
+                <p>Built a weather app using OpenWeatherMap API and JavaScript.</p>
+            </div>
+            <div class="card">
+                <h3>Task Manager</h3>
+                <p>Developed a simple to-do application to track daily tasks.</p>
+            </div>
+        </section>
+
+        <section class="section contact">
+            <h2>Contact</h2>
+            <p>Reach out to me at: <a href="mailto:anay.contact@gmail.com">anay.contact@gmail.com</a></p>
+            <p>GitHub: <a href="https://github.com/anaydev">github.com/anaydev</a></p>
+        </section>
+
+        <footer class="footer">
+            <p>&copy; 2025 Anay. Built with passion and a cup of black coffee.</p>
+        </footer>
+    </div>
 </body>
 </html>
