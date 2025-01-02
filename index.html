@@ -6,123 +6,132 @@
     <title>Anay's Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #0d1117;
-            color: #c9d1d9;
-            line-height: 1.8;
-            padding: 40px 20px;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #000000f2;
+            color: #9f9f9f;
         }
         header {
-            margin-bottom: 60px;
+            text-align: center;
+            padding: 50px 20px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-size: 1.5rem;
+    font-weight: 700;
+    background: -webkit-linear-gradient(90deg, #212121, #ffffff);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
         }
         header h1 {
-            font-size: 4rem;
-            font-weight: 700;
-            background: -webkit-linear-gradient(45deg, #ff00cc, #3333ff);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            margin: 0;
+            font-size: 3em;
         }
         header p {
-            font-size: 1.5rem;
-            font-weight: 400;
+            font-size: 1.2em;
+            color: #666;
         }
-        .section {
-            margin: 60px 0;
+        section {
+            max-width: 900px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #101010;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
-        .section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 30px;
-            border-bottom: 3px solid #00ADB5;
-            display: inline-block;
-            padding-bottom: 10px;
+        h2 {
+            color: #c1c1c1;
+    border-bottom: 3px solid #00ADB5;
+display: inline-block;
+    padding-bottom: 10px;
         }
-        .skills, .projects {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 30px;
+        .skills, .projects, .contact {
+            margin-top: 30px;
         }
-        .card {
-            background: linear-gradient(145deg, #1f2937, #374151);
-            padding: 30px;
-            border-radius: 15px;
-            width: 320px;
-            box-shadow: 10px 10px 20px #0a0a0a, -10px -10px 20px #1f1f1f;
-            transition: transform 0.4s ease-in-out, box-shadow 0.4s;
+        ul {
+            list-style: none;
+            padding: 0;
         }
-        .card:hover {
-            transform: translateY(-15px);
-            box-shadow: 15px 15px 30px #0a0a0a, -15px -15px 30px #1f1f1f;
+        li {
+            margin: 10px 0;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
         }
         .contact a {
+        
+            text-decoration: none;
+        
             color: #00ADB5;
             text-decoration: none;
-            font-weight: 600;
-            font-size: 1.3rem;
+            font-weight: 600
         }
-        .footer {
-            margin-top: 80px;
-            font-size: 1rem;
-            color: #8b949e;
+        .contact a:hover {
+            text-decoration: underline;
         }
+.footer {
+    margin-top: 80px;
+    font-size: 1rem;
+    color: #8b949e;
+text-align: center;
+ margin-bottom: 80px;
+}
+
+
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>Anay's Portfolio</h1>
-            <p>18-year-old aspiring software engineer | Dark humor enthusiast | JEE warrior</p>
-        </header>
+    <header>
+        <h1>Anay's Portfolio</h1>
+        <p>18 y/o | Aspiring Software Engineer | Fitness Enthusiast | Sketcher</p>
+    </header>
 
-        <section class="section about">
-            <h2>About Me</h2>
-            <p>I'm Anay, a JEE dropper grinding to crack into a top-tier engineering college. Passionate about coding, fitness, and aesthetics. I believe in living life like a game - leveling up every day.</p>
-        </section>
+    <section>
+        <h2>About Me</h2>
+        <p>
+            I am an 18-year-old aspiring engineer who loves blending logic with creativity. Currently preparing for JEE, 
+            while balancing challenges and personal growth. Passionate about coding, design, fitness, and personal development.
+        </p>
+    </section>
 
-        <section class="section skills">
-            <h2>Skills</h2>
-            <div class="card">Web Development</div>
-            <div class="card">Python</div>
-            <div class="card">JavaScript</div>
-            <div class="card">C++</div>
-        </section>
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li>HTML, CSS, JavaScript</li>
+            <li>Python, Java</li>
+            <li>Data Structures and Algorithms</li>
+            <li>Version Control (Git, GitHub)</li>
+            <li>UI/UX Design</li>
+        </ul>
+    </section>
 
-        <section class="section projects">
-            <h2>Projects</h2>
-            <div class="card">
-                <h3>Portfolio Website</h3>
-                <p>A personal portfolio to showcase my skills and projects.</p>
-            </div>
-            <div class="card">
-                <h3>Weather App</h3>
-                <p>Built a weather app using OpenWeatherMap API and JavaScript.</p>
-            </div>
-            <div class="card">
-                <h3>Task Manager</h3>
-                <p>Developed a simple to-do application to track daily tasks.</p>
-            </div>
-        </section>
+    <section class="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>
+                <strong>Personal Portfolio Website</strong> - A fully responsive personal portfolio to showcase my skills and projects.
+            </li>
+            <li>
+                <strong>Weather App</strong> - Built with HTML, CSS, and JavaScript, fetching real-time weather data.
+            </li>
+            <li>
+                <strong>Task Manager</strong> - A simple web-based task manager to track daily goals and productivity.
+            </li>
+        </ul>
+    </section>
 
-        <section class="section contact">
-            <h2>Contact</h2>
-            <p>Reach out to me at: <a href="mailto:anay.contact@gmail.com">anay.contact@gmail.com</a></p>
-            <p>GitHub: <a href="https://github.com/anaydev">github.com/anaydev</a></p>
-        </section>
-
-        <footer class="footer">
-            <p>&copy; 2025 Anay. Built with passion and a cup of black coffee.</p>
+    <section class="contact">
+        <h2>Contact</h2>
+        <p>Feel free to reach out to me!</p>
+        <ul>
+            <li>Email: <a href="mailto:coolchiku@proton.me">coolchiku@proton.me</a></li>
+            <li>GitHub: <a href="https://github.com/anay2310" target="_blank">github.com/anay2310</a></li>
+            <li>LinkedIn: <a href="https://linkedin.com/in/anay2310" target="_blank">linkedin.com/in/anay2310</a></li>
+        </ul>
+    </section>
+<footer class="footer">
+            <p>© 2025 Anay. Built with passion and a cup of black coffee.</p>
         </footer>
-    </div>
 </body>
 </html>
