@@ -6,10 +6,212 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CodeWithAnay</title>
-    <link rel="stylesheet" href="CodeWithAnay.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Archivo+Black&display=swap" rel="stylesheet">
+    <style>
+        @import url(https://fonts.googleapis.com/css?family=Anonymous+Pro);
+        @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro');
+
+       .body {
+    background-color: rgb(0 0 0);
+    padding: 0%;
+    font-family: 'Comfortaa', 'Segoe UI', sans-serif;
+}
+
+#intro {}
+
+#mainHeading {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 2rem;
+    text-align: center;
+    margin: 20px;
+    margin-bottom: 4rem;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-simple-animation-rev 3s ease forwards;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#mainHeading:hover {
+    animation: rainbow-text-simple-animation 2s ease-in forwards
+}
+
+.navigationBar {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.navigationBar ul {
+    display: flex;
+    width: fit-content;
+    height: fit-content;
+}
+
+.navigationBar ul li {
+    list-style: none;
+    width: fit-content;
+    border: 2px solid gree;
+    padding: 10px;
+    color: white;
+    transition-duration: 1s;
+}
+
+.navigationBar ul li:hover {
+    cursor: pointer;
+    transition-duration: 1s;
+    color: red;
+}
+
+p {
+    border-right: solid 3px rgba(0, 255, 0, .75);
+    white-space: nowrap;
+    overflow: hidden;
+    font-family: 'Source Code Pro', monospace;
+    font-size: 1rem;
+    color: #ffffff;
+    margin: 10px auto;
+    text-align: center;
+}
+
+/* Animation */
+
+p {
+    animation: animated-text 5s steps(29, end) 2s 1 normal both, animated-cursor 600ms steps(29, end) infinite;
+}
+
+#intro h3 {
+    font-family: "Archivo Black", sans-serif;
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 20px;
+    margin-top: 2rem;
+    background-color: #CA4246;
+    background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+    background-size: 100%;
+    background-repeat: repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow-text-simple-animation-rev 4s ease forwards;
+    -webkit-text-fill-color: transparent;
+    -moz-text-fill-color: transparent;
+}
+
+#intro h3:hover {
+    animation: rainbow-text-simple-animation 2s ease-in forwards
+}
+
+.info {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    justify-items: center;
+    align-self: center;
+    margin: auto;
+    align-items: center;
+}
+
+.info div {
+    height: fit-content;
+    width: 280px;
+    display: flex;
+    padding: 20px;
+    border-radius: 1rem;
+    background-color: #12001e;
+    justify-content: center;
+    align-items: center;
+    color: antiquewhite;
+    text-align: center;
+    line-height: 35px;
+    font-size: 1rem;
+margin: 10px;
+
+
+}
+.footer {
+    margin-top: 80px;
+    font-size: 1rem;
+    color: #8b949e;
+text-align: center;
+ margin-bottom: 80px;
+margin-left: 8px;
+margin-right: 8px;
+
+}
+
+
+
+#About:hover, #Projects:hover, #Services:hover {
+            cursor: pointer;
+            background-color: #CA4246;
+            background-image: linear-gradient( 45deg, #9900ff 16.666%, #E16541 16.666%, #E16541 33.333%, #F18F43 33.333%, #ff0000 50%, #c300ff 50%, #7800bd 66.666%, #476098 66.666%, #476098 83.333%, #a5a748 83.333%);
+            animation: rainbow-text-simple-animation-rev 0.5s ease forwards;
+        }
+
+
+
+
+
+@media only screen and (max-width: 720px) {
+    .info {
+        flex-direction: column;
+    }
+    .info div {
+        margin-bottom: 15px;
+    }
+}
+
+/* text animation */
+
+@keyframes animated-text {
+    from {
+        width: 0;
+    }
+    to {
+        width: 85%;
+    }
+}
+
+/* cursor animations */
+
+@keyframes animated-cursor {
+    from {
+        border-right-color: rgb(255, 0, 234);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+    </style>
 </head>
 
 <body class="body">
@@ -22,43 +224,30 @@
         </ul>
     </nav>
     <div id="intro">
-
-        <h1 id="mainHeading">
-            CodeWithAnay
-        </h1>
-        <p id="introParagraph">
-            Hello, I am Anay
-        </p>
-        <p id="introParagraph2">
-            I Am A Android & Web Developer
-        </p>
-        <h3>
-            INFO
-        </h3>
+        <h1 id="mainHeading">CodeWithAnay</h1>
+        <p>Hello, I am Anay</p>
+        <p>I Am A Android & Web Developer</p>
+        <h3>INFO</h3>
     </div>
     <div class="info">
-        <div id="About">
-            About<br>
-            I am software engineer by profession<br>
+        <div id="About">About<br>I am software engineer by profession<br>
             I am 15 year old<br>
             And have experience in :<br>
-            Java , Python , Kotlin , HTML , CSS , JS
-        </div>
-        <div id="Projects">
-            Projects<br>
-            I have worked upon many projects <br>
+            Java , Python , Kotlin , HTML , CSS , JS</div>
+        <div id="Projects">Projects<br>I have worked upon many projects <br>
             some of them are : <br>
-            Printly , Fluid Player , CodeWithAnay (Github)
-        </div>
-        <div id="Services">
-            Services<br>
+            Printly , Fluid Player , CodeWithAnay (Github)</div>
+        <div id="Services">Services<br>
             I am working as a part-time freelancer<br>
             I am ready for opportunities<br>
             Contact Here : <br>
-            [REDACTED] | Github | CodeWithAnay.com
-        </div>
+            [REDACTED] | Github | CodeWithAnay.com</div>
     </div>
 
+<footer class="footer">
+            <p>© 2021 Anay. Old website.🙂</p>
+
+        </footer>
 </body>
 
 </html>
