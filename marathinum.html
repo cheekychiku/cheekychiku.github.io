@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <title>Marathi Numerals</title>
+      <style>
+         body {
+         font-family:  sans-serif;
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: center;
+         min-height: 100vh;
+         background-color: #f8f8f8; /* Softer background */
+         padding: 1em;
+         box-sizing: border-box;
+         }
+         .card {
+         font-size: 3em;
+         padding: 1.5em 2em; /* Increased padding */
+         border: none; /* Removed border */
+         border-radius: 15px; /* Increased border radius */
+         background-color: #ffffff;
+         box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Added subtle shadow */
+         margin-bottom: 1.5em;
+         text-align: center;
+         width: 90%;
+         max-width: 400px;
+         box-sizing: border-box;
+         transition: transform 0.2s ease; /* Add smooth transition */
+         }
+         .card:hover{
+         transform: scale(1.05);
+         }
+         #english-numeral {
+         font-size: 1.5em;
+         margin-top: 1em;
+         color: #333; /* Darker text color */
+         }
+         @media (min-width: 768px) {
+         .card {
+         font-size: 4em;
+         width: 70%;
+         }
+         }
+         .hidden {
+         display: none;
+         }
+         button {
+         padding: 0.8em 1.6em;
+         background-color: #2196F3; /* More vibrant button color */
+         color: white;
+         border: none;
+         border-radius: 5px;
+         cursor: pointer;
+         margin: 0.5em;
+         /* ... other button styles ... */
+         font-size: 1.2em;
+         transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease; /* Multiple transitions */
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);  /* Initial subtle shadow */
+         }
+         button:hover {
+         transform: translateY(-2px); /* Slight lift on hover */
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Increased shadow on hover */
+         background-color: #1976D2; /* Darker background on hover */
+         }
+         button:active { /* Style for when button is clicked */
+         transform: translateY(0); /* Remove lift */
+         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Back to initial shadow */
+         background-color: #1565C0;
+         }
+      </style>
+   </head>
+   <body>
+      <div class="card">
+         <span id="marathi-numeral"></span>
+      </div>
+      <p id="english-numeral" class="hidden"></p>
+      <div>
+         <button onclick="showEnglish()">Show</button>
+         <button onclick="nextNumber()">Next</button>
+      </div>
+      <script>
+         const marathiNumerals = ["१", "२", "३", "४", "५", "६", "७", "८", "९", "१०", "११", "१२", "१३", "१४", "१५", "१६", "१७", "१८", "१९", "२०", "२१", "२२", "२३", "२४", "२५", "२६", "२७", "२८", "२९", "३०", "३१", "३२", "३३", "३४", "३५", "३६", "३७", "३८", "३९", "४०", "४१", "४२", "४३", "४४", "४५", "४६", "४७", "४८", "४९", "५०","५१", "५२", "५३", "५४", "५५", "५६", "५७", "५८", "५९", "६०","६१", "६२", "६३", "६४", "६५", "६६", "६७", "६८", "६९", "७०", "७१", "७२", "७३", "७४", "७५", "७६", "७७", "७८", "७९", "८०",  "८१", "८२", "८३", "८४", "८५", "८६", "८७", "८८", "८९", "९०", "९१", "९२", "९३", "९४", "९५", "९६", "९७", "९८", "९९", "१००"];
+         const englishNumerals = Array.from({length: 100}, (_, i) => i + 1); // Optimized: Creates array 1-100
+         const marathiNames = ["एक", "दोन", "तीन", "चार", "पाच", "सहा", "सात", "आठ", "नऊ", "दहा", "अकरा", "बारा", "तेरा", "चौदा", "पंधरा", "सोळा", "सतरा", "अठरा", "एकोणीस", "वीस", "एकवीस", "बावीस", "तेवीस", "चोवीस", "पंचवीस", "सव्वीस", "सत्तावीस", "अठ्ठावीस", "एकोणतीस", "तीस", "एकतीस", "बत्तीस", "तेहतीस", "चौतीस", "पस्तीस", "छत्तीस", "सदतीस", "अडतीस", "एकोणचाळीस", "चाळीस", "एकेचाळीस", "बेचाळीस", "त्रेचाळीस", "चव्वेचाळीस", "पंचेचाळीस", "सेहेचाळीस", "सत्तेचाळीस", "अठ्ठेचाळीस", "एकोणपन्नास", "पन्नास", "एकावन्न", "बावन्न", "त्रेपन्न", "चोपन्न", "पंचावन्न", "छपन्न", "सत्तावन्न", "अठ्ठावन्न", "एकोणसाठ", "साठ",  "एकसष्ट", "बासष्ट", "त्रेसष्ट", "चौसष्ट", "पासष्ट", "सहासष्ट", "सत्तसष्ट", "अठसष्ट", "एकोणसत्तर", "सत्तर", "एक्याहत्तर", "बहात्तर", "त्र्याहत्तर", "चौऱ्याहत्तर", "पंच्याहत्तर", "शहात्तर", "सत्याहत्तर", "अठ्याहत्तर", "एकोण ऐंशी", "ऐंशी", "एक्याऐंशी", "ब्याऐंशी", "त्र्याऐंशी", "चौऱ्याऐंशी", "पंच्याऐंशी", "शहाऐंशी", "सत्त्याऐंशी", "अठ्याऐंशी", "एकोणनव्वद", "नव्वद", "एक्याण्णव", "ब्याण्णव", "त्र्याण्णव", "चौऱ्याण्णव", "पंच्याण्णव", "शहाण्णव", "सत्त्याण्णव", "अठ्याण्णव", "नव्याण्णव", "शंभर"];
+         
+         
+         let currentNumberIndex;
+         const englishNumeralElement = document.getElementById('english-numeral'); // Store element for efficiency
+         const marathiNumeralElement = document.getElementById('marathi-numeral'); // Store element for efficiency
+         
+         
+         function showEnglish() {
+             englishNumeralElement.textContent = englishNumerals[currentNumberIndex] + " (" + marathiNames[currentNumberIndex] + ")";
+             englishNumeralElement.classList.remove('hidden');
+         }
+         
+         function nextNumber() {
+            englishNumeralElement.classList.add('hidden');
+            englishNumeralElement.textContent = '';
+            currentNumberIndex = Math.floor(Math.random() * marathiNumerals.length);
+            marathiNumeralElement.textContent = marathiNumerals[currentNumberIndex];
+         
+         }
+         
+         window.onload = nextNumber;
+      </script>
+   </body>
+</html>
