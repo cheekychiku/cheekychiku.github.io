@@ -1,3 +1,3 @@
 # Personal Website
 
-[link to web](https://bytechiku.github.io)
+[link to web](https://cheekychiku.github.io)
