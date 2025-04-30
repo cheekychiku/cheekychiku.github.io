@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>A Question for You...</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffcccc, #ffe5cc); /* Cute gradient */
+            font-family: 'Comic Sans MS', cursive, sans-serif; /* A playful font */
+            overflow: hidden; /* Hide scrollbars caused by button escaping */
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            text-align: center;
+            background-color: rgb(255 255 255 / 95%); /* Semi-transparent white */
+            padding: 35px;
+            z-index: 1000;
+            border-radius: 25px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+        }
+
+        h1 {
+            color: #ff6f61; /* Coral color */
+            margin-bottom: 20px;
+            font-size: 2em; /* Make it prominent */
+        }
+
+        #main-message {
+             color: #555;
+             font-size: 1em;
+             margin-bottom: 30px;
+        }
+
+        .gif-container {
+            margin-bottom: 15px;
+        }
+
+        img {
+            max-width: 80%; /* Responsive image */
+            height: auto;
+            max-height: 150px; /* Limit height */
+            border-radius: 15px;
+        }
+
+        .buttons {
+            display: flex; /* Use flexbox for buttons */
+            justify-content: center; /* Center buttons horizontally */
+            align-items: center; /* Align buttons vertically */
+            gap: 20px; /* Space between buttons */
+            margin-top: 20px;
+            /* Ensure buttons wrap on smaller screens if needed */
+            flex-wrap: wrap;
+        }
+
+        button {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 15px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.1s ease;
+            color: white;
+            font-weight: bold;
+            /* Make sure buttons don't shrink too much */
+            flex-shrink: 0;
+        }
+
+        .random-gif {
+    position: absolute;
+    /* Place behind the main container but above the background */
+    z-index: 1;
+    pointer-events: none; /* Make them non-interactive */
+    border-radius: 10px; /* Optional cute corners */
+    opacity: 0.8; /* Slightly transparent */
+ }
+
+        #yesButton {
+            background-color: #88d8b0; /* Soft green */
+            /* Make Yes button significantly bigger initially */
+            transform: scale(1.2);
+            order: 1; /* Define order for flexbox */
+        }
+
+        #yesButton:hover {
+            background-color: #6bc6a4;
+            transform: scale(1.3); /* Slightly larger on hover */
+        }
+
+        #noButton {
+            background-color: #ff6f61; /* Coral color */
+            /* REMOVED position: absolute; initially */
+            order: 2; /* Define order for flexbox */
+            z-index: 1003;
+            /* We add position: absolute dynamically using JS now */
+        }
+
+        #noButton:hover {
+            background-color: #e65a50;
+            /* Movement is handled in JS */
+        }
+
+        /* Add a class to handle the moving state */
+        .no-button-moving {
+            position: absolute !important; /* Use !important to override inline styles if needed, though likely not */
+             /* No transition needed for the jump */
+            transition: none !important;
+        }
+
+
+         /* Style for the success state */
+        .success-message h1 {
+            color: #88d8b0; /* Green color for success */
+        }
+
+         .success-message #main-message {
+             color: #333;
+             font-weight: bold;
+         }
+
+         .hidden {
+            display: none;
+         }
+
+    </style>
+</head>
+<body>
+
+    <div class="container" id="mainContainer">
+        <h1>Hey there! ✨</h1>
+        <p id="main-message">I have a kinda important question for you...</p>
+        <div class="gif-container">
+            <!-- Find a cute GIF online and replace the src -->
+            <img id="gif" src="https://media.tenor.com/lvd_VOW9MtQAAAAi/hehe.gif" alt="Cute animated GIF">
+        </div>
+        <h2 id="question">Will you go out with me? 👉👈</h2>
+
+        <div class="buttons">
+            <button id="yesButton">YES! 😍</button>
+            <button id="noButton">No 😢</button>
+        </div>
+    </div>
+
+    <script>
+        const noButton = document.getElementById('noButton');
+        const yesButton = document.getElementById('yesButton');
+        const container = document.getElementById('mainContainer');
+        const question = document.getElementById('question');
+        const mainMessage = document.getElementById('main-message');
+        const gif = document.getElementById('gif');
+
+        let noButtonRect; // Declare here to be accessible
+
+        // Function to move the 'No' button randomly
+        function moveNoButton() {
+            // *** Add the class to make it absolute *first* ***
+            if (!noButton.classList.contains('no-button-moving')) {
+                noButton.classList.add('no-button-moving');
+                // Get the dimensions *after* it's potentially rendered absolutely
+                 // Recalculate rect here if needed, but dimensions should be same
+                 noButtonRect = noButton.getBoundingClientRect();
+            }
+
+             // Recalculate button dimensions each time in case of window resize? Might be overkill.
+             // If not recalculating, ensure noButtonRect is defined before first move.
+             if (!noButtonRect) {
+                noButtonRect = noButton.getBoundingClientRect();
+             }
+
+
+            const maxX = window.innerWidth - noButtonRect.width;
+            const maxY = window.innerHeight - noButtonRect.height;
+
+            // Ensure coordinates are positive
+            const randomX = Math.max(0, Math.random() * maxX);
+            const randomY = Math.max(0, Math.random() * maxY);
+
+            noButton.style.left = randomX + 'px';
+            noButton.style.top = randomY + 'px';
+        }
+
+        // Add event listener for mouseover (hover)
+        noButton.addEventListener('mouseover', () => {
+             // Update rect info right before moving might be safer
+             noButtonRect = noButton.getBoundingClientRect();
+             moveNoButton();
+        });
+
+        // Add event listener for click (in case they manage to click it!)
+        noButton.addEventListener('click', () => {
+            // Optional: Add a message or change text slightly if they *do* click No
+            // alert("You clicked No? Try again! 😉"); // Simple alert for now
+
+            // Update rect info right before moving might be safer
+             noButtonRect = noButton.getBoundingClientRect();
+             moveNoButton(); // Move it again immediately
+        });
+
+        // Add event listener for the 'Yes' button
+        yesButton.addEventListener('click', () => {
+            // Confession accepted! Change the content
+            question.textContent = "YAY! You said YES! 🎉";
+            mainMessage.textContent = "See you soon! I'm so happy! 😊";
+            gif.src = "https://media.tenor.com/gjTjxUCoP3sAAAAi/jumping-gatito.gif"; // Success/Happy GIF
+
+ 
+
+            // Hide the buttons
+            yesButton.classList.add('hidden');
+            noButton.classList.add('hidden'); // Hide No button completely
+
+             // Optional: Style the container differently on success
+             container.classList.add('success-message');
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const body = document.body;
+            const numberOfGifs = 20; // How many decorative GIFs?
+            const gifUrls = [ // Add more cute GIF URLs here!
+                'https://media.tenor.com/SzjZCjI1kZQAAAAi/bubu-bubu-dudu.gif', // Sparkles
+                'https://media.tenor.com/6uHiHBHG22wAAAAi/peach-and-goma.gif', // Heart
+                'https://c.tenor.com/rET2f2Z90qMAAAAC/tenor.gif', // Peach cat dance
+                'https://media.tenor.com/R4CwIiPJXigAAAAi/cute.gif', // Cute bear waving
+                'https://media.tenor.com/qVdyIgm8wzYAAAAi/hello.gif', // Spinning star
+                'https://c.tenor.com/1n8RmSWvElMAAAAC/tenor.gif'  // Cat hug
+            ];
+
+            for (let i = 0; i < numberOfGifs; i++) {
+                const img = document.createElement('img');
+                img.src = gifUrls[i % gifUrls.length]; // Cycle through the GIFs
+                img.classList.add('random-gif');
+
+                // Random size (e.g., 50px to 120px wide)
+                const randomSize = Math.random() * 70 + 50; // 50 to 120
+                img.style.width = `${randomSize}px`;
+                img.style.height = 'auto'; // Maintain aspect ratio
+
+                // Random position (ensure it's within viewport)
+                // Use percentages for better responsiveness
+                const randomTop = Math.random() * 90; // 0% to 90% top
+                const randomLeft = Math.random() * 90; // 0% to 90% left
+                img.style.top = `${randomTop}%`;
+                img.style.left = `${randomLeft}%`;
+
+                // Random rotation (-45 to +45 degrees)
+                const randomRotate = (Math.random() - 0.5) * 90; // -45 to 45
+                img.style.transform = `rotate(${randomRotate}deg)`;
+
+                body.appendChild(img);
+            }
+        });
+    </script>
+
+</body>
+</html>
