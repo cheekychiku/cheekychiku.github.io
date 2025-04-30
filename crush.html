@@ -218,7 +218,7 @@
 
         document.addEventListener('DOMContentLoaded', () => {
             const body = document.body;
-            const numberOfGifs = 20;
+            const numberOfGifs = 25; // How many decorative GIFs? (Adjust as needed)
             const gifUrls = [
                 'https://media.tenor.com/SzjZCjI1kZQAAAAi/bubu-bubu-dudu.gif',
                 'https://media.tenor.com/6uHiHBHG22wAAAAi/peach-and-goma.gif',
@@ -228,29 +228,88 @@
                 'https://c.tenor.com/1n8RmSWvElMAAAAC/tenor.gif'
             ];
 
-            for (let i = 0; i < numberOfGifs; i++) {
-                const img = document.createElement('img');
-                img.src = gifUrls[i % gifUrls.length];
-                img.classList.add('random-gif');
+            const placedGifRects = []; // Store rectangles of placed GIFs
+            const maxTries = 50; // Max attempts to find a non-overlapping spot per GIF
+            const minGap = 15; // Minimum pixel gap between GIF bounding boxes
 
-
-                const randomSize = Math.random() * 70 + 50;
-                img.style.width = `${randomSize}px`;
-                img.style.height = 'auto';
-
-
-                const maxPercentOffset = 80;
-                const randomTop = Math.random() * maxPercentOffset;
-                const randomLeft = Math.random() * maxPercentOffset;
-                img.style.top = `${randomTop}%`;
-                img.style.left = `${randomLeft}%`;
-
-
-                const randomRotate = (Math.random() - 0.5) * 90;
-                img.style.transform = `rotate(${randomRotate}deg)`;
-
-                body.appendChild(img);
+            // Function to check if two rectangles overlap (with added gap)
+            function checkOverlap(rect1, rect2) {
+                return !(
+                    rect1.right + minGap < rect2.left ||
+                    rect1.left > rect2.right + minGap ||
+                    rect1.bottom + minGap < rect2.top ||
+                    rect1.top > rect2.bottom + minGap
+                );
             }
+
+            const viewportWidth = window.innerWidth;
+            const viewportHeight = window.innerHeight;
+
+            for (let i = 0; i < numberOfGifs; i++) {
+                let currentTry = 0;
+                let positionFound = false;
+                let potentialRect = {};
+                let randomSize, randomTopPercent, randomLeftPercent, randomRotate;
+
+                while (currentTry < maxTries && !positionFound) {
+                    currentTry++;
+
+                    // Generate random properties
+                    randomSize = Math.random() * 70 + 50; // 50 to 120 pixels wide
+                    // Using pixel calculation internally for collision check accuracy
+                    let randomTopPx = Math.random() * (viewportHeight - randomSize - minGap); // Ensure bottom edge is within bounds
+                    let randomLeftPx = Math.random() * (viewportWidth - randomSize - minGap); // Ensure right edge is within bounds
+
+                    // Simplified bounding box for collision detection (approximating as square)
+                    potentialRect = {
+                        top: randomTopPx,
+                        left: randomLeftPx,
+                        bottom: randomTopPx + randomSize, // Approximation
+                        right: randomLeftPx + randomSize, // Approximation
+                        width: randomSize,
+                        height: randomSize // Approximation
+                    };
+
+                    // Check against already placed GIFs
+                    let overlaps = false;
+                    for (const placedRect of placedGifRects) {
+                        if (checkOverlap(potentialRect, placedRect)) {
+                            overlaps = true;
+                            break;
+                        }
+                    }
+
+                    if (!overlaps) {
+                        positionFound = true;
+                        // Convert valid pixel position back to percentage for styling (optional, could use pixels)
+                        // randomTopPercent = (randomTopPx / viewportHeight) * 100;
+                        // randomLeftPercent = (randomLeftPx / viewportWidth) * 100;
+                        // Use pixel values directly for positioning for better accuracy
+                        randomRotate = (Math.random() - 0.5) * 90; // -45 to 45 degrees
+                    }
+                } // End of while loop trying to find position
+
+                // If a valid position was found within tries limit
+                if (positionFound) {
+                    const img = document.createElement('img');
+                    img.src = gifUrls[i % gifUrls.length]; // Cycle through the GIFs
+                    img.classList.add('random-gif');
+
+                    // Apply styles using the found pixel position and random size/rotation
+                    img.style.width = `${randomSize}px`;
+                    img.style.height = 'auto'; // Maintain aspect ratio visually
+                    img.style.top = `${potentialRect.top}px`; // Use pixel position
+                    img.style.left = `${potentialRect.left}px`; // Use pixel position
+                    img.style.transform = `rotate(${randomRotate}deg)`;
+
+                    body.appendChild(img);
+                    // Store the rectangle used for collision checking
+                    placedGifRects.push(potentialRect);
+                } else {
+                    console.warn(`Could not find a non-overlapping position for GIF ${i+1} after ${maxTries} tries.`);
+                    // Optional: could reduce numberOfGifs if placement fails often
+                }
+            } // End of for loop placing GIFs
         });
     </script>
 
