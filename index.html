@@ -508,7 +508,7 @@
         if (currentTheme) {
             setTheme(currentTheme);
         } else {
-            setTheme(prefersDarkScheme.matches ? 'dark' : 'light');
+            setTheme(prefersDarkScheme.matches ? 'light' : 'dark');
         }
 
         toggleSwitch.addEventListener('change', function(event) {
@@ -535,7 +535,7 @@
 
         prefersDarkScheme.addEventListener('change', (event) => {
             if (!localStorage.getItem('theme')) {
-                setTheme(event.matches ? 'dark' : 'light');
+                setTheme(event.matches ? 'light' : 'dark');
             }
         });
     </script>
